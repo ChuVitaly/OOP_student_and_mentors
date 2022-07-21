@@ -47,6 +47,9 @@ class Reviewer(Mentor):
         else:
             return 'Ошибка'
 
+    def __str__(self):
+        return f"Reviewer \nИмя: {self.name} \nФамилия: {self.surname}"
+
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
@@ -66,4 +69,8 @@ cool_lecturer.courses_attached += ['Python']
 
 cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
 cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
-print(cool_lecturer.name, cool_lecturer.grades)
+# print(cool_lecturer.name, cool_lecturer.grades)
+
+# Task-3
+print(cool_reviewer)
+print("========================================")
