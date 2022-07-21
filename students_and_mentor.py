@@ -15,6 +15,7 @@ class Student:
         self.finished_courses = []
         self.courses_in_progress = []
         self.grades = {}
+        self.home_work_grades = []
 
     def rate_lec(self, lecturer, course, grade):
         if isinstance(lecturer, Lecturer) and course in self.courses_attached:
@@ -24,6 +25,15 @@ class Student:
                 lecturer.grades[course] = [grade]
         else:
             return 'Ошибка'
+
+    def average_rating(self):
+        aver = sum(self.home_work_grades) / len(self.home_work_grades)
+        return aver
+
+    def __str__(self):
+        rez = self.average_rating()
+        return f"Student \nИмя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за домашнее задание: {rez} \n" \
+               f"Курсы в процессе изучения: {(', '.join(self.courses_attached))} \nЗавершенные курсы: {self.finished_courses}"
 
 
 class Mentor:
@@ -61,6 +71,9 @@ class Reviewer(Mentor):
 
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
+best_student.home_work_grades = [8, 10, 6, 9]
+best_student.courses_attached = ['Python', 'Git']
+best_student.finished_courses = "Введение в программирование"
 best_student.courses_in_progress += ['Python']
 
 cool_reviewer = Reviewer('Some', 'Buddy', "Python")
@@ -81,8 +94,11 @@ cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
 # print(cool_lecturer.name, cool_lecturer.grades)
 
 # Task-3
+
+
 print(cool_reviewer)
 print("========================================")
 print(cool_lecturer)
 
-# print((Lecturer.average_rating(Lecturer, "Python")))
+print("========================================")
+print(best_student)
