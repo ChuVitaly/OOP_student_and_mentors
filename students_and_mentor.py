@@ -27,14 +27,23 @@ class Student:
 
 
 class Mentor:
-    def __init__(self, name, surname):
+    def __init__(self, name, surname, course):
         self.name = name
         self.surname = surname
+        self.course = course
         self.courses_attached = []
 
 
 class Lecturer(Mentor, Student):
     grades = {}
+
+    def average_rating(self):
+        aver = sum(self.grades[self.course]) / len(self.grades[self.course])
+        return aver
+
+    def __str__(self):
+        rez = self.average_rating()
+        return f"lecturer \nИмя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за лекцию: {rez} "
 
 
 class Reviewer(Mentor):
@@ -54,7 +63,7 @@ class Reviewer(Mentor):
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
 
-cool_reviewer = Reviewer('Some', 'Buddy')
+cool_reviewer = Reviewer('Some', 'Buddy', "Python")
 cool_reviewer.courses_attached += ['Python']
 
 cool_reviewer.rate_hw(best_student, 'Python', 10)
@@ -64,7 +73,7 @@ cool_reviewer.rate_hw(best_student, 'Python', 10)
 # print(best_student.grades)
 
 # Task-2
-cool_lecturer = Lecturer('Vovan', 'Tolyan')
+cool_lecturer = Lecturer('Vovan', 'Tolyan', "Python")
 cool_lecturer.courses_attached += ['Python']
 
 cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
@@ -74,3 +83,6 @@ cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
 # Task-3
 print(cool_reviewer)
 print("========================================")
+print(cool_lecturer)
+
+# print((Lecturer.average_rating(Lecturer, "Python")))
