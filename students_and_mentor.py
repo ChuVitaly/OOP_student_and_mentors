@@ -98,9 +98,26 @@ cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
 # Task-3
 
 
-print(cool_reviewer)
-print("========================================")
-print(cool_lecturer)
+# print(cool_reviewer)
+# print("========================================")
+# print(cool_lecturer)
+#
+# print("========================================")
+# print(best_student)
 
-print("========================================")
-print(best_student)
+# Class instances
+# class Student
+student1 = Student('Maria', 'Mashkova', "woman")
+student2 = Student('Pol', 'Haris', "man")
+
+# class Mentor
+mentor1 = Mentor('Bob', 'Dol', 'Git')
+mentor2 = Mentor('Muhamed', 'Ali', 'Python')
+
+# class Lecturer
+lecturer1 = Lecturer('Vlad', 'Stashevski', 'Python')
+lecturer2 = Lecturer('Vladimir', 'klyar', 'Git')
+
+# class Reviewer
+reviewer1 = Reviewer('Yarik', 'Bull', 'Git')
+reviewer2 = Reviewer('Sasha', 'Klinton', 'Python')
