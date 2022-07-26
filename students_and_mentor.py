@@ -30,6 +30,8 @@ class Student:
         aver = sum(self.home_work_grades) / len(self.home_work_grades)
         return aver
 
+    # Реализация магических методов
+
     def __str__(self):
         rez = self.average_rating()
         return f"Student \nИмя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за домашнее задание: {rez} \n" \
