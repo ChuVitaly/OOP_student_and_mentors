@@ -98,9 +98,14 @@ cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
 # Task-3
 
 
-print(cool_reviewer)
-print("========================================")
-print(cool_lecturer)
+# print(cool_reviewer)
+# print("========================================")
+# print(cool_lecturer)
+#
+# print("========================================")
+# print(best_student)
 
-print("========================================")
-print(best_student)
+# Вызов магического метода
+print(cool_reviewer.__str__())
+print(cool_lecturer.__str__())
+print(best_student.__str__())
