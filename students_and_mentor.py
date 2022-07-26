@@ -47,7 +47,7 @@ class Mentor:
 
 
 class Lecturer(Mentor, Student):
-    grades = {}
+    grades = []
 
     def average_rating(self):
         aver = sum(self.grades[self.course]) / len(self.grades[self.course])
@@ -91,8 +91,8 @@ cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_lecturer = Lecturer('Vovan', 'Tolyan', "Python")
 cool_lecturer.courses_attached += ['Python']
 
-cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
-cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
+# cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
+# cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
 # print(cool_lecturer.name, cool_lecturer.grades)
 
 # Task-3
@@ -108,8 +108,16 @@ cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
 # Class instances
 # class Student
 student1 = Student('Maria', 'Mashkova', "woman")
-student2 = Student('Pol', 'Haris', "man")
+student1.grades = [5, 10, 7, 8, 10]
+student1.home_work_grades = [10, 7, 8, 9, 10]
+student1.finished_courses = ['Основы программирования']
+student1.courses_attached = ['Python', 'javascript']
 
+student2 = Student('Pol', 'Haris', "man")
+student2.home_work_grades = [10, 9, 9, 9, 10]
+student2.grades = [10, 10, 9, 9, 10]
+student2.finished_courses = ['Основы программирования', 'Git', 'C++']
+student2.courses_attached = ['Python', 'javascript', ]
 # class Mentor
 mentor1 = Mentor('Bob', 'Dol', 'Git')
 mentor2 = Mentor('Muhamed', 'Ali', 'Python')
@@ -117,7 +125,23 @@ mentor2 = Mentor('Muhamed', 'Ali', 'Python')
 # class Lecturer
 lecturer1 = Lecturer('Vlad', 'Stashevski', 'Python')
 lecturer2 = Lecturer('Vladimir', 'klyar', 'Git')
+lecturer1 .grades = [10, 9, 10, 8, 10]
+lecturer2 .grades = [10, 10, 10, 10, 10]
+lecturer1.courses_attached = "Python"
+lecturer2.courses_attached = "Git"
 
 # class Reviewer
 reviewer1 = Reviewer('Yarik', 'Bull', 'Git')
 reviewer2 = Reviewer('Sasha', 'Klinton', 'Python')
+
+# Вызов методов
+# print(student1.rate_lec(lecturer1, 'Python', '10'))
+# print(student2.rate_lec(lecturer2, 'Python', '10'))
+# print(student1.average_rating())
+# print(student2.average_rating())
+# print(student2.__str__())
+# print(student1.__str__())
+
+# print(lecturer1.__str__())
+
+
