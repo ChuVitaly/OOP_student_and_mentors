@@ -80,11 +80,12 @@ cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_reviewer.rate_hw(best_student, 'Python', 10)
 
 # Task-2
-# cool_lecturer = Lecturer('Vovan', 'Tolyan', "Python")
-# cool_lecturer.courses_attached += ['Python']
-#
-# cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
-# cool_lecturer.rate_lec(cool_lecturer, 'Python', 9)
+cool_lecturer = Lecturer('Vovan', 'Tolyan', "Python")
+cool_lecturer.courses_attached += ['Python']
+cool_lecturer.grades = {'Python': [10, 8, 10, 10, 8]}
+
+cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
+cool_lecturer.rate_lec(cool_lecturer, 'Python', 9)
 # print(cool_lecturer.name, cool_lecturer.grades)
 
 # Task-3
@@ -117,16 +118,17 @@ mentor2 = Mentor('Muhamed', 'Ali', 'Python')
 
 # class Lecturer
 lecturer1 = Lecturer('Vlad', 'Stashevski', 'Python')
-lecturer1.grades = {'Python': [10, 9, 10, 8, 10]}
+lecturer1.grades = {'Python': [10, 9, 10, 8, 10], 'Git': [10, 9, 10, 10, 9]}
 lecturer1.courses_attached += ["Python"]
 lecturer2 = Lecturer('Vladimir', 'klyar', 'Git')
-lecturer2.grades = {'Git': [10, 5, 10, 10, 7]}
+lecturer2.grades = {'Python': [10, 8, 10, 10, 8], 'Git': [10, 5, 10, 10, 7]}
 lecturer2.courses_attached += ["Git"]
 
 # class Reviewer
 reviewer1 = Reviewer('Yarik', 'Bull', 'Python')
 reviewer1.courses_attached += ['Python']
 reviewer2 = Reviewer('Sasha', 'Klinton', 'Python')
+reviewer2.courses_attached += ['Python']
 
 # Вызов методов
 # print(student1.rate_lec(lecturer1, 'Python', '10'))
@@ -166,7 +168,7 @@ reviewer2 = Reviewer('Sasha', 'Klinton', 'Python')
 
 # Задание № 4.
 l_students = [student1, student2, best_student]
-course = ['Python']
+courses = ['Python', 'Git']
 
 
 def average_mark_all_students_for_course(l_students, course='Python'):
@@ -179,3 +181,20 @@ def average_mark_all_students_for_course(l_students, course='Python'):
 
 
 average_mark_all_students_for_course(l_students)
+
+# Задание № 4. lecturer
+l_lecturers = [lecturer1, lecturer2]
+
+
+def average_mark_all_lecturer_for_course(l_lecturers, course='Python'):
+    list_average_rating = []
+    for lecturer in l_lecturers:
+        all_grades_one_lecturer = lecturer.grades[f"{course}"]
+        sum_all_grades_one_lecturer = sum(all_grades_one_lecturer)
+        average_mark_lecture = sum_all_grades_one_lecturer / len(all_grades_one_lecturer)
+        list_average_rating.append(average_mark_lecture)
+    average_mark_all_lecturer = sum(list_average_rating) / len(l_lecturers)
+    print(f"Средняя оценка всех лекторов: {average_mark_all_lecturer} в рамках курса {course}")
+
+
+average_mark_all_lecturer_for_course(l_lecturers, course='Python')
