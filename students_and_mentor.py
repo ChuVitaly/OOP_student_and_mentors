@@ -1,11 +1,3 @@
-"""
-Задание:
-теперь класс Mentor должен стать родительским классом, а от него нужно реализовать наследование классов Lecturer
-(лекторы)и Reviewer (эксперты, проверяющие домашние задания).
- Очевидно, имя, фамилия и список закрепленных курсов логично реализовать на уровне родительского класса.
-"""
-
-
 class Student:
     def __init__(self, name, surname, gender):
         self.name = name
@@ -37,7 +29,7 @@ class Student:
 
     def __lt__(self, other):
         print('Сравниваем у двух студентов оценки за домашнее задание')
-        return  self.home_work_grades == other.home_work_grades
+        return self.home_work_grades == other.home_work_grades
 
 
 class Mentor:
@@ -75,7 +67,7 @@ class Reviewer(Mentor):
 
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
-best_student.home_work_grades = [8, 10, 6, 9]
+best_student.home_work_grades = [8, 10, 6, 9, 10]
 best_student.courses_attached = ['Python', 'Git']
 best_student.finished_courses = "Введение в программирование"
 best_student.courses_in_progress += ['Python']
@@ -86,7 +78,6 @@ cool_reviewer.courses_attached += ['Python']
 cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_reviewer.rate_hw(best_student, 'Python', 10)
-
 
 # Task-2
 # cool_lecturer = Lecturer('Vovan', 'Tolyan', "Python")
@@ -158,6 +149,33 @@ reviewer2 = Reviewer('Sasha', 'Klinton', 'Python')
 # print(lecturer2.__str__())
 # print(reviewer2.__str__())
 # print(reviewer1.__str__())
-print(student1.__lt__(student2))
+# print(student1.__lt__(student2))
 
 
+# def average_mark_all_students_for_course(list_students):
+#     for i in list_students:
+#         print(i.)
+#
+# average_mark_all_students_for_course(list_students)
+
+# print(student1.average_rating())
+# print(student2.average_rating())
+# print(best_student.average_rating())
+# x = ((student1.average_rating() + student2.average_rating() + best_student.average_rating()) / len(list_students))
+# print(round(x, 1))
+
+# Задание № 4.
+l_students = [student1, student2, best_student]
+course = ['Python']
+
+
+def average_mark_all_students_for_course(l_students, course='Python'):
+    list_average_rating = []
+    for student in l_students:
+        s = student.average_rating()
+        list_average_rating.append(s)
+    average_mark = round((sum(list_average_rating) / len(l_students)), 1)
+    print(f"Средняя оценка за домашнее задание всех студентов: {average_mark} на курсе {course}")
+
+
+average_mark_all_students_for_course(l_students)
