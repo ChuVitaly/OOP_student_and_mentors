@@ -30,12 +30,14 @@ class Student:
         aver = sum(self.home_work_grades) / len(self.home_work_grades)
         return aver
 
-    # Реализация магических методов
-
     def __str__(self):
         rez = self.average_rating()
         return f"Student \nИмя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за домашнее задание: {rez} \n" \
                f"Курсы в процессе изучения: {(', '.join(self.courses_attached))} \nЗавершенные курсы: {self.finished_courses}"
+
+    def __lt__(self, other):
+        print('Сравниваем у двух студентов оценки за домашнее задание')
+        return  self.home_work_grades == other.home_work_grades
 
 
 class Mentor:
@@ -47,7 +49,7 @@ class Mentor:
 
 
 class Lecturer(Mentor, Student):
-    grades = []
+    grades = {}
 
     def average_rating(self):
         aver = sum(self.grades[self.course]) / len(self.grades[self.course])
@@ -85,14 +87,13 @@ cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_reviewer.rate_hw(best_student, 'Python', 10)
 
-# print(best_student.grades)
 
 # Task-2
-cool_lecturer = Lecturer('Vovan', 'Tolyan', "Python")
-cool_lecturer.courses_attached += ['Python']
-
+# cool_lecturer = Lecturer('Vovan', 'Tolyan', "Python")
+# cool_lecturer.courses_attached += ['Python']
+#
 # cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
-# cool_lecturer.rate_lec(cool_lecturer, 'Python', 10)
+# cool_lecturer.rate_lec(cool_lecturer, 'Python', 9)
 # print(cool_lecturer.name, cool_lecturer.grades)
 
 # Task-3
@@ -108,30 +109,32 @@ cool_lecturer.courses_attached += ['Python']
 # Class instances
 # class Student
 student1 = Student('Maria', 'Mashkova', "woman")
-student1.grades = [5, 10, 7, 8, 10]
+student1.grades = {'Python': [5, 10, 7, 8, 10], 'javascript': [9, 10, 9, 8, 10]}
 student1.home_work_grades = [10, 7, 8, 9, 10]
 student1.finished_courses = ['Основы программирования']
 student1.courses_attached = ['Python', 'javascript']
 
 student2 = Student('Pol', 'Haris', "man")
 student2.home_work_grades = [10, 9, 9, 9, 10]
-student2.grades = [10, 10, 9, 9, 10]
+student2.grades = {'Python': [5, 10, 7, 8, 10], 'javascript': [8, 10, 8, 8, 9]}
 student2.finished_courses = ['Основы программирования', 'Git', 'C++']
 student2.courses_attached = ['Python', 'javascript', ]
+
 # class Mentor
 mentor1 = Mentor('Bob', 'Dol', 'Git')
 mentor2 = Mentor('Muhamed', 'Ali', 'Python')
 
 # class Lecturer
 lecturer1 = Lecturer('Vlad', 'Stashevski', 'Python')
+lecturer1.grades = {'Python': [10, 9, 10, 8, 10]}
+lecturer1.courses_attached += ["Python"]
 lecturer2 = Lecturer('Vladimir', 'klyar', 'Git')
-lecturer1 .grades = [10, 9, 10, 8, 10]
-lecturer2 .grades = [10, 10, 10, 10, 10]
-lecturer1.courses_attached = "Python"
-lecturer2.courses_attached = "Git"
+lecturer2.grades = {'Git': [10, 5, 10, 10, 7]}
+lecturer2.courses_attached += ["Git"]
 
 # class Reviewer
-reviewer1 = Reviewer('Yarik', 'Bull', 'Git')
+reviewer1 = Reviewer('Yarik', 'Bull', 'Python')
+reviewer1.courses_attached += ['Python']
 reviewer2 = Reviewer('Sasha', 'Klinton', 'Python')
 
 # Вызов методов
@@ -139,9 +142,22 @@ reviewer2 = Reviewer('Sasha', 'Klinton', 'Python')
 # print(student2.rate_lec(lecturer2, 'Python', '10'))
 # print(student1.average_rating())
 # print(student2.average_rating())
+# print(lecturer1.average_rating())
+# print(reviewer1.rate_hw(student1, "Python", 9))
+
+
+# print(dir(cool_lecturer))
+# print(cool_lecturer.__dict__)
+# print(cool_lecturer.__str__())
+
+
+# Magical methods
 # print(student2.__str__())
 # print(student1.__str__())
-
 # print(lecturer1.__str__())
+# print(lecturer2.__str__())
+# print(reviewer2.__str__())
+# print(reviewer1.__str__())
+print(student1.__lt__(student2))
 
 
